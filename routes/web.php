@@ -29,13 +29,17 @@ Route::get('/page-blog',[HomeController::class,'page_blog'])->name('page_blog');
 Route::get('/page-single-blog',[HomeController::class,'page_single_blog'])->name('page_single_blog');
 Route::get('/page-regular',[HomeController::class,'page_reguler'])->name('page_reguler');
 //Trang thanh toán
-Route::get('/page-checkout/{id_user}',[HomeController::class,'page_checkout']);
+Route::get('/page-checkout/{id_user}/{total}',[HomeController::class,'page_checkout']);
 //Hàm thêm vào giỏ hàng
 Route::get('/add-cart/{id_user}/{id_product}',[HomeController::class,'add_cart']);
 
 //Hàm thêm giỏ hàng trong trang chi tiết
 Route::post('/add-cart-detail/{id_user}/{id_product}',[HomeController::class,'add_cart_detail']);
 
+//Hàm cập nhật số lượng giỏ hàng ajax
+Route::get('update-cart/{key}/{qty}',[HomeController::class,'update_cart']);
+//Hàm xóa giỏ hàng ajax
+Route::get('delete-cart/{id_cart}',[HomeController::class,'delete_cart']);
 
 //Trang đăng ký
 Route::get('/page-signup', function () {

@@ -6,9 +6,11 @@ use App\Models\GioHang;
 use App\Models\hoadon;
 use App\Models\HoadonChitiet;
 use App\Models\loaisanpham;
+use App\Models\sanpham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use MongoDB\Driver\Session;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -102,12 +104,13 @@ class HomeController extends Controller
     }
 
     //Thanh toán
-    public function page_checkout ($id_user){
+    public function page_checkout ($id_user,$total){
         //Thêm vào hóa đơn mới
         $add_order = new hoadon();
         $add_order->ma_user = $id_user;
         $add_order->trangthai_hd = 0;
         $add_order->hinhthucthanhtoan = 0;
+        $add_order->tongtien_hd = $total;
         $add_order->save();
 
         //Xử lí trang chi tiết hóa đơn
@@ -185,5 +188,37 @@ class HomeController extends Controller
             $add_cart->save();
         }
         return redirect()->back()->with('success','Thêm thành công');
+    }
+
+    //Hàm xóa giỏ hàng ajax
+    public function delete_cart($id_cart){
+        GioHang::where('id',$id_cart)->delete();
+        $get_user = Auth::id();
+        //tính lại tổng giá
+        $total = 0;
+        $get_carts = DB::table('giohangs')->where('ma_user',$get_user)->get();
+        foreach($get_carts as $get_cart){
+            $total = $total + $get_cart->thanhtien;
+        }
+        return response()->json($total);
+    }
+
+    //Hàm cập nhật số lượng giỏ hàng ajax
+    //Cập nhật số lượng table-cart
+    public function update_cart($key, $qty){
+        $add_cart = GioHang::where('id',$key)->first();
+        $add_cart->soluong_sp = $qty;
+        $get_pro = sanpham::where('id',$add_cart->ma_sp)->first();
+        $add_cart->thanhtien = $get_pro->gia_sp * $qty;
+        $add_cart->save();
+
+        //Tính tổng giá
+        $total = 0;
+        $get_id = Auth::id();
+        $get_carts = GioHang::where('ma_user',$get_id)->get();
+        foreach($get_carts as $get_cart){
+            $total = $total + $get_cart->thanhtien;
+        }
+        return response()->json($total);
     }
 }

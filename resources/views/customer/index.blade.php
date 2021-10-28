@@ -2,22 +2,6 @@
 @section('title','Trang chủ')
 @section('content')
 
-    <!-- ##### Welcome Area Start ##### -->
-    {{-- <section class="welcome_area bg-img background-overlay" style="background-image: url({{asset('public/upload_img/slider11.jpg')}});">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="hero-content">
-                        <h6></h6>
-                        <h2 style="color: #fff;">C H Ả N H <br>
-                        C O S M E T I C S</h2>
-                        <a href="{{ url('page-shop/9999/1')}}" class="btn essence-btn">Xem ngay</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- ##### Welcome Area End ##### -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -35,7 +19,6 @@
                     <a href="{{ url('page-shop/9999/1')}}" class="btn essence-btn">Xem ngay</a>
                 </div>
             </div>
-                
           </div>
           <div class="carousel-item">
             <img class="d-block w-100" src="https://theblushboutique.com.au/wp-content/uploads/2017/02/slider-makeup.jpg"  alt="Second slide">
