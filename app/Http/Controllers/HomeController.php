@@ -6,11 +6,13 @@ use App\Models\GioHang;
 use App\Models\hoadon;
 use App\Models\HoadonChitiet;
 use App\Models\loaisanpham;
+use App\Models\RatingStar;
 use App\Models\sanpham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use MongoDB\Driver\Session;
+
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -87,6 +89,22 @@ class HomeController extends Controller
         ]);
     }
 
+    //trang danh gia sao
+    public function postRatingStar($userId, $productId, Request $request){
+        $get_count_rating = DB::table('rating_stars')->where([['user_id', '=', $userId], ['product_id', '=', $productId]])->count();
+        if ($get_count_rating >= 1){
+            Session::put('message_error');
+            return redirect()->back()->with('message_error', 'Bạn đã đánh giá rồi!');
+        }else{
+            $add_rating = new RatingStar();
+            $add_rating->rating_star = $request->input('rating');
+            $add_rating->user_id = $userId;
+            $add_rating->product_id = $productId;
+            $add_rating->save();
+            Session::put('message_success');
+            return redirect()->back()->with('message_success', 'Đã đánh giá SAO');
+        }
+    }
     //Trang liên lạc
     public function page_contact (){
         return view('customer.page_contact');
@@ -158,9 +176,9 @@ class HomeController extends Controller
             $add_cart->thanhtien = $get_price->gia_sp;
             $add_cart->save();
         }
-        
+
         return redirect()->back()->with('success','Thêm thành công');
-    }   
+    }
 
     public function add_cart_detail(Request $request,$id_user,$id_product){
         $check_cart = DB::table('giohangs')->where([['ma_user',$id_user],['ma_sp',$id_product]])->first();

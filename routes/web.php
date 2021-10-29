@@ -23,6 +23,10 @@ Route::get('/',[HomeController::class,'page_home'])->name('/');
 Route::get('/page-shop/{id_pk}/{id_loaidulieu}',[HomeController::class,'page_shop'])->name('page_shop');
 //Trang chi tiết sản phẩm
 Route::get('/page-detail-shop/{id}',[HomeController::class,'page_detail_shop'])->name('page_detail_product');
+
+//danh gia sao
+
+Route::post('post-rating-star/{userId}/{productId}', [HomeController::class,'postRatingStar'])->name('postRatingStar');
 //Trang liên lạc
 Route::get('/page-contact',[HomeController::class,'page_contact'])->name('page_contact');
 Route::get('/page-blog',[HomeController::class,'page_blog'])->name('page_blog');
