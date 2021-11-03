@@ -224,7 +224,6 @@
                     @endif
                      
                 </li>
-                <li><span>giảm giá:</span> <span>0%</span></li>
                 <li>
                     <span>tổng cộng:</span>
                     <?php $total = 0 ?>
@@ -300,9 +299,16 @@
             success:function(result){
                 $("#sid"+key).remove();
                 $('#total').html(cms_encode_currency_format(result)+ 'VNĐ');
-                if(result < 500000)
+                if(result < 500000){
                     $('#ship').html(cms_encode_currency_format(ship)+ 'VNĐ');
                     $('#total-price').html(cms_encode_currency_format(result + ship)+ 'VNĐ');
+                }
+                    
+                if(result == 0){
+                    $('#ship').html('0 VNĐ');
+                    $('#total-price').html('0 VNĐ');
+                }
+                    
             }
         })
     }
