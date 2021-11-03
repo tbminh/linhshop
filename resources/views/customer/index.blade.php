@@ -150,7 +150,7 @@
                                     <div class="hover-content">
                                         <!-- Add to Cart -->
                                         <div class="add-to-cart-btn">
-                                            <a href="#" class="btn essence-btn">Thêm vào giỏ hàng</a>
+                                            <a href="{{ url('add-cart/'.Auth::id(). '/'. $get_products->id) }}" class="btn essence-btn">Thêm vào giỏ hàng</a>
                                         </div>
                                     </div>
                                 </div>

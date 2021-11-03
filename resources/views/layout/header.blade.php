@@ -108,7 +108,8 @@
                 @php($show_carts = DB::table('giohangs')->where('ma_user',Auth::id())->get())
                 @if (Auth::check())
                     <a href="#" id="essenceCartBtn">
-                        <i class="fa fa-shopping-cart fa-lg"></i><span>{{ $show_carts->count() }}</span>
+                        <i class="fa fa-shopping-cart fa-lg"></i>
+                        <span id="data">{{ $show_carts->count() }}</span>
                     </a>
                 @else
                     <a href="#" id="essenceCartBtn">
@@ -299,6 +300,10 @@
             success:function(result){
                 $("#sid"+key).remove();
                 $('#total').html(cms_encode_currency_format(result)+ 'VNĐ');
+
+                var num = parseInt($("#essenceCartBtn").text());
+                var sult = num -1;
+                $('#data').text(sult);
                 if(result < 500000){
                     $('#ship').html(cms_encode_currency_format(ship)+ 'VNĐ');
                     $('#total-price').html(cms_encode_currency_format(result + ship)+ 'VNĐ');
