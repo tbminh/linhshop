@@ -13,7 +13,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Trang chủ </a>
+                    <a href="{{route('page_admin')}}"> <i class="menu-icon fa fa-dashboard"></i>Trang chủ </a>
                 </li>
                 <h3 class="menu-title">Quản lý</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
@@ -37,6 +37,9 @@
                         <li><i class="fas fa-paper-plane"></i></i><a href="{{ route('page_phankhuc') }}">Phân khúc sản phẩm</a></li>
                         <li><i class="fab fa-product-hunt"></i><a href="{{ route('page_sanpham') }}">Sản Phẩm</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="{{route('page_maneger_user')}}" class="dropdown-toggle"> <i class="menu-icon fas fa-user"></i> Quản lý thành viên </a>
                 </li>
                 <li>
                     <a href="{{route('page_maneger_user')}}" class="dropdown-toggle"> <i class="menu-icon fas fa-user"></i> Quản lý thành viên </a>
