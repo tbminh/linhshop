@@ -36,8 +36,7 @@
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Thêm mới nhà cung cấp sản phẩm</a>
                                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#maneger_supplier" role="tab" aria-controls="nav-profile" aria-selected="false">Quản lý nhà cung cấp</a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Dữ liệu nhà cung cấp</a>
-
+                                        {{-- <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Dữ liệu nhà cung cấp</a> --}}
                                     </div>
                                 </nav>
                                 <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -47,22 +46,20 @@
                                                 @csrf
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên nhà cung cấp</label></div>
-                                                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="tenncc" placeholder="" class="form-control">
-                                                        <small class="form-text text-muted">
-                                                            <a href="">Trợ giúp ?</a>
-                                                        </small>
+                                                    <div class="col-12 col-md-9">
+                                                        <input type="text" id="text-input" name="tenncc" placeholder="Nhập tên ..." class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Địa chỉ nhà cung cấp</label></div>
                                                     <div class="col-12 col-md-9">
-                                                        <input name="diachincc" id="textarea-input" placeholder="" class="form-control">
+                                                        <input name="diachincc" id="textarea-input" placeholder="Nhập địa chỉ..." class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Mô tả</label></div>
                                                     <div class="col-12 col-md-9">
-                                                        <textarea name="description_ncc" id="textarea-input" rows="6" placeholder="Phần mô tả quyền User..." class="form-control"></textarea></div>
+                                                        <textarea name="description_ncc" id="textarea-input" rows="6" placeholder="Nhập mô tả..." class="form-control"></textarea></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Hình ảnh đại diện</label></div>
@@ -71,17 +68,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-footer">
-                                                    <button type="submit" class="btn btn-primary btn-sm">
-                                                        <i class="fa fa-dot-circle-o"></i> thêm mới
+                                                    <button type="submit" class="btn btn-primary float-right">
+                                                        <i class="fa fa-dot-circle-o"></i> Thêm mới
                                                     </button>
-                                                    <a type="button" class="btn btn-danger btn-sm" href="{{route('page_admin')}}">
-                                                        <i class="fa fa-ban"></i> Thoát
-                                                    </a>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    {{-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <div class="card">
                                             <div class="card-header">
                                                 <strong class="card-title">Dữ liệu nhà cung cấp sản phẩm</strong>
@@ -163,7 +157,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="tab-pane fade" id="maneger_supplier" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <div class="card">
                                             <div class="card-header">
@@ -173,8 +167,8 @@
                                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th>#ID</th>
                                                         <th>Tên nhà cung cấp</th>
+                                                        <th>Hình Ảnh</th>
                                                         <th>Địa chỉ</th>
                                                         <th>Mô tả</th>
                                                         <th scope="col" colspan="2" style="text-align: center">Tùy chọn</th>
@@ -183,9 +177,11 @@
                                                     <tbody>
                                                     @foreach($ncc as $nccs)
                                                         <tr>
-                                                            <td>NCC0{{$nccs->id}}</td>
                                                             <td>
                                                                 {{$nccs->ten_ncc}}
+                                                            </td>
+                                                            <td>
+                                                                <img src="{{ asset('public/page_admin/img/core-img/'.$nccs->hinhanh_ncc) }}" width="40" height="20">
                                                             </td>
                                                             <td>
                                                                 {{$nccs->diachi_ncc}}

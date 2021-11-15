@@ -65,10 +65,9 @@
                                         </td>
 
                                         <td>
-                                            {{-- @php($get_product_suppliers = DB::table('product_suppliers')->where('product_id',$data->id)->first()) --}}
-                                            {{-- @php($get_suppliers = DB::table('suppliers')->where('id', $get_product_suppliers->supplier_id)->first()) --}}
-                                            {{-- {{ $get_suppliers->supplier_name }} --}}
-                                            Nhà Cung Cấp
+                                            @php($get_product_suppliers = DB::table('ncc_sanphams')->where('ma_sp',$data->id)->first())
+                                            @php($get_suppliers = DB::table('nhacungcaps')->where('id', $get_product_suppliers->ma_ncc)->first())
+                                                {{ $get_suppliers->ten_ncc }}
                                         </td>
 
                                         <td>{{$data->tensp}}</td>
@@ -110,6 +109,7 @@
                                                                                 <option value="{{ $get_segment->id }}"> &emsp; &emsp;{{ $get_segment->tenphankhuc }}</option>
                                                                             @endif
                                                                         @endforeach
+                                                                        <option value="">- - - Chọn phân khúc - - -</option>
                                                                         @foreach($get_segments as $get_segment)
                                                                             @if($get_segment->id == $data->ma_phankhuc )
                                                                                 @continue
@@ -119,6 +119,27 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
+
+                                                                {{-- <div class="form-group">
+                                                                    <label for="products">Nhà Cung Cấp</label>
+                                                                    <select name="inputNCC" class="form-control">
+                                                                        @php($get_ncc_sp = DB::table('ncc_sanphams')->where('ma_sp',$data->id)->first())
+                                                                        @php($get_sups = DB::table('nhacungcaps')->get())
+                                                                        @foreach($get_sups as $get_sup)
+                                                                            @if($get_sup->id == $get_ncc_sp->ma_ncc)
+                                                                                <option value="{{ $get_sup->id }}"> &emsp; &emsp;{{ $get_sup->ten_ncc }}</option>
+                                                                            @endif
+                                                                        @endforeach
+                                                                        <option value="">- - - Chọn nhà cung cấp - - -</option>
+                                                                        @foreach($get_sups as $get_sup)
+                                                                            @if($get_sup->id == $get_ncc_sp->ma_ncc )
+                                                                                @continue
+                                                                            @else
+                                                                                <option value="{{ $get_sup->id }}"> &emsp; &emsp;{{ $get_sup->ten_ncc }}</option>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div> --}}
                                                                 <div class="form-group">
                                                                     <label for="products">Tên Sản Phẩm</label>
                                                                     <input type="text" class="form-control" id="exampleInput" name="inputName" value="{{$data->tensp}}" placeholder="">
@@ -146,7 +167,7 @@
 
                                                                 <div class="form-group">
                                                                     <label for="products">Hình Ảnh:</label>
-                                                                    <input required type="file" class="form-control-file" id="imgInp" name="image[]" placeholder="images" multiple>
+                                                                    <input type="file" class="form-control-file" id="imgInp" name="image" multiple>
                                                                     @foreach((array)json_decode($data->hinh_sp, true) as $image)
                                                                         <img id="blah" class="img-circle elevation-2" style="max-width:100%;height:50px;border-radius:5px;" src="{{asset('public/upload_img/'.$image)}}" alt="">
                                                                     @endforeach
@@ -203,6 +224,17 @@
                                     @php($get_segments = DB::table('phankhucs')->get())
                                     @foreach($get_segments as $get_segment)
                                         <option value="{{ $get_segment->id }}"> &emsp; &emsp;{{ $get_segment->tenphankhuc }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="products">Nhà Cung Cấp</label>
+                                <select name="inputNCC" class="form-control">
+                                    <option value="">- - - Chọn nhà cung cấp - - -</option>
+                                    @php($get_segments = DB::table('nhacungcaps')->get())
+                                    @foreach($get_segments as $get_segment)
+                                        <option value="{{ $get_segment->id }}"> &emsp; &emsp;{{ $get_segment->ten_ncc }}</option>
                                     @endforeach
                                 </select>
                             </div>

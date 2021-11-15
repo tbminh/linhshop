@@ -55,19 +55,12 @@
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">Thương hiệu</li>
                                     <li><a href="shop.html">Loreal</a></li>
-                                    <li><a href="shop.html">Merzy</a></li>
-                                    <li><a href="shop.html">Merzy</a></li>
-                                    <li><a href="shop.html">G9skin</a></li>
-                                    <li><a href="shop.html">Romand</a></li>
-                                    <li><a href="shop.html">Innisfree</a></li>
-                                    <li><a href="shop.html">Some by mi</a></li>
-                                    <li><a href="shop.html">Black rouge</a></li>
                                 </ul>
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">Tùy chọn</li>
-                                    <li><a href="shop.html">Đánh giá cao</a></li>
-                                    <li><a href="shop.html">Thương hiệu mới</a></li>
-                                    <li><a href="shop.html">Thương hiệu lớn</a></li>
+                                    <li><a href="#">Đánh giá cao</a></li>
+                                    <li><a href="#">Thương hiệu mới</a></li>
+                                    <li><a href="#">Thương hiệu lớn</a></li>
 
                                 </ul>
                                 <div class="single-mega cn-col-4"></div>

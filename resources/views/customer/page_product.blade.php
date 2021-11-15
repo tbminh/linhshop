@@ -65,7 +65,20 @@
                                 @endforeach
                             </div>
                         </div>
-
+                        
+                        <!-- ##### Single Widget ##### -->
+                        <div class="widget brands mb-50">
+                            <!-- Widget Title 2 -->
+                            <p class="widget-title2 mb-30">Thương hiệu</p>
+                            <div class="widget-desc">
+                                <ul>
+                                    @php($get_suppliers = DB::table('nhacungcaps')->get())
+                                    @foreach($get_suppliers as $get_supplier)
+                                        <li><a href="#">{{ $get_supplier->ten_ncc }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                         <!-- ##### Single Widget ##### -->
                         <div class="widget price mb-50">
                             <!-- Widget Title -->
@@ -105,22 +118,7 @@
                             </div>
                         </div>
 
-                        <!-- ##### Single Widget ##### -->
-                        <div class="widget brands mb-50">
-                            <!-- Widget Title 2 -->
-                            <p class="widget-title2 mb-30">Thương hiệu</p>
-                            <div class="widget-desc">
-                                <ul>
-                                    <li><a href="#">Loreal</a></li>
-                                    <li><a href="#">Merzy</a></li>
-                                    <li><a href="#">G9skin</a></li>
-                                    <li><a href="#">Romand</a></li>
-                                    <li><a href="#">Innisfree</a></li>
-                                    <li><a href="#">Some by mi</a></li>
-                                    <li><a href="#">Black rouge</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 

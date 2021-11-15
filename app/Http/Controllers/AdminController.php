@@ -15,7 +15,8 @@ use App\Models\sanpham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Session;
+
+use Illuminate\Support\Facades\Session;
 
 
 class AdminController extends Controller
@@ -115,7 +116,7 @@ class AdminController extends Controller
 
         $query = $data['query'];
 
-        $filter_data = User::select('email')
+        $filter_data = DB::table('users')->select('email')
             ->where('email', 'LIKE', '%'.$query.'%')
             ->get();
 
@@ -234,6 +235,12 @@ class AdminController extends Controller
         $add_product->hinh_sp=json_encode($imgData);
         $add_product -> save();
 
+        $get_max = DB::table('sanphams')->max('id');
+        $add_sup = new ncc_sanpham();
+        $add_sup->ma_sp = $get_max;
+        $add_sup->ma_ncc  = $request->input('inputNCC');
+        $add_sup->save();
+
         return redirect()->back()->with('success','Đã thêm thành công');
     }
 
@@ -259,12 +266,16 @@ class AdminController extends Controller
         if($request->hasfile('image')) {
             foreach ($request->file('image') as $file) {
                 $name = $file->getClientOriginalName();
-                $file->move(public_path() . '/uploads/', $name);
+                $file->move(public_path('public/upload_img'), $name);
                 $imgData[] = $name;
             }
         }
         $edit_product->hinh_sp=json_encode($imgData);
         $edit_product -> save();
+
+        $get_sup = $request->input('inputNCC');
+        DB::table('ncc_sanphams')->where('ma_sp ',$id)->update(['ma_ncc'=>$get_sup]);
+
         return redirect()->back()->with('success','Đã thêm thành công');
     }
 

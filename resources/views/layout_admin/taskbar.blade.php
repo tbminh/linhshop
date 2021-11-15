@@ -13,7 +13,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Trang chủ </a>
+                    <a href="{{ route('page_admin') }}"> <i class="menu-icon fa fa-dashboard"></i>Trang chủ </a>
                 </li>
                 <h3 class="menu-title">Quản lý</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
@@ -44,14 +44,14 @@
 
                 <h3 class="menu-title">Dữ liệu bán hàng</h3><!-- /.menu-title -->
 
-                <li class="menu-item-has-children dropdown">
+                {{-- <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Báo cáo thống kê</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Đơn hàng chưa duyệt</a></li>
                         <li><i class="fas fa-file-invoice-dollar"></i><a href="maps-vector.html">Hóa đơn thanh toán</a></li>
                         <li><i class="fas fa-money-check-alt"></i><a href="maps-vector.html">Doanh thu</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <h3 class="menu-title">Trang bán hàng</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="{{route('/')}}" class="dropdown-toggle" > <i class="menu-icon fas fa-store"></i>Cửa hàng</a>

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -34,7 +34,7 @@ class HomeController extends Controller
             $get_products = DB::table('sanphams')->take(8)->latest()->get();
             Session()->forget('id_pk');
             Session()->forget('id_pk_loaisp');
-            Session()->put('id_pk_new',"Tất cả sản phẩm");
+            Session()->put('id_pk_new',"Sản phẩm mới");
             return view('customer.page_product',['get_products'=> $get_products])->with('id_pk_new');
         }else {
             //nguoc lai  kiem tra

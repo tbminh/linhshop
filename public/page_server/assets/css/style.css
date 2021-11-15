@@ -1120,12 +1120,13 @@ aside.left-panel {
             transition: all 0.25s ease; }
           .navbar .navbar-nav li.menu-item-has-children a:hover:before {
             color: #fff; }
-        .navbar .navbar-nav li.menu-item-has-children .sub-menu {
-          background: #e9ecef;
-          border: none;
-          box-shadow: none;
-          overflow-y: hidden;
-          padding: 0 0 0 35px; }
+            .navbar .navbar-nav li.menu-item-has-children .sub-menu {
+              background: #F0B579;
+              border: none;
+              box-shadow: none;
+              overflow-y: hidden;
+              padding: 0 0 0 35px;
+          }
           .navbar .navbar-nav li.menu-item-has-children .sub-menu li {
             position: relative; }
           .navbar .navbar-nav li.menu-item-has-children .sub-menu i {

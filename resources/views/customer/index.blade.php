@@ -166,29 +166,13 @@
     <!-- ##### Brands Area Start ##### -->
     <div class="brands-area d-flex align-items-center justify-content-between">
         <!-- Brand Logo -->
+        @php($get_sups = DB::table('nhacungcaps')->get())
+        @foreach ($get_sups as $get_sup)
         <div class="single-brands-logo">
-            <img src="{{asset('public/page_admin/img/core-img/brand1.png')}}" alt="">
+            <img src="{{asset('public/page_admin/img/core-img/'.$get_sup->hinhanh_ncc)}}" >
         </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{asset('public/page_admin/img/core-img/brand2.png')}}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{asset('public/page_admin/img/core-img/brand3.png')}}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{asset('public/page_admin/img/core-img/brand4.png')}}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{asset('public/page_admin/img/core-img/brand5.png')}}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{{asset('public/page_admin/img/core-img/brand6.png')}}" alt="">
-        </div>
+        @endforeach
+        
     </div>
     <!-- ##### Brands Area End ##### -->
 
