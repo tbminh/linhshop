@@ -23,7 +23,11 @@ Route::get('/',[HomeController::class,'page_home'])->name('/');
 Route::get('/page-shop/{id_pk}/{id_loaidulieu}',[HomeController::class,'page_shop'])->name('page_shop');
 //Trang chi tiết sản phẩm
 Route::get('/page-detail-shop/{id}',[HomeController::class,'page_detail_shop'])->name('page_detail_product');
+//tragn thuong hieu san pham
+Route::get('thuong-hieu{id}',[HomeController::class,'thuonghieu'])->name('thuonghieu');
 
+//tim kiem san pham
+Route::get('search-product', [HomeController::class,'searchProduct'])->name('searchProduct');
 //danh gia sao
 
 Route::post('post-rating-star/{userId}/{productId}', [HomeController::class,'postRatingStar'])->name('postRatingStar');

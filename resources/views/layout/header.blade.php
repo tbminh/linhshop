@@ -22,7 +22,7 @@
                 <!-- Nav Start -->
                 <div class="classynav" style="margin-left: 150px;position: ">
                     <ul>
-                        <li style="margin-bottom: 50px;"> 
+                        <li style="margin-bottom: 50px;">
                             <a class="nav-brand" href="{{ url('/') }}" title="Chảnh Cosmetic">
                                 <img  src="{{asset('public/upload_img/logo-shop.jpg')}}" width="80" >
                             </a>
@@ -54,7 +54,12 @@
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">Thương hiệu</li>
-                                    <li><a href="shop.html">Loreal</a></li>
+                                    @php($thuonghieu = DB::table('nhacungcaps')->get())
+                                    @foreach($thuonghieu as $thuonghieus)
+                                        <li><a href="{{route('thuonghieu',$thuonghieus->id)}}">{{$thuonghieus->ten_ncc}}</a></li>
+                                    @endforeach
+
+
                                 </ul>
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">Tùy chọn</li>
@@ -81,8 +86,9 @@
         <div class="d-flex clearfix justify-content-end">
             <!-- Search Area -->
             <div class="search-area">
-                <form action="#" method="post">
-                    <input type="text" name="user_name" id="user_name" placeholder="Bạn đang tìm gì ..." />
+                <form action="{{route('searchProduct')}}" method="get">
+                    @csrf
+                    <input type="text" name="search_product" id="search_product" placeholder="Bạn đang tìm gì ..." />
                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
             </div>
@@ -150,8 +156,8 @@
                                       <span class="glyphicon glyphicon-minus">-</span>
                                     </button>
                                 </span>
-                                    <input type="number" id="cartqty_{{ $data->id }}" name="quantity{{$show_product->id}}" 
-                                        class="form-control input-number" value="{{ $data->soluong_sp }}" 
+                                    <input type="number" id="cartqty_{{ $data->id }}" name="quantity{{$show_product->id}}"
+                                        class="form-control input-number" value="{{ $data->soluong_sp }}"
                                         onchange="myFunction({{ $data->id }} + ',' + this.value)"
                                         min="1" max="100" style="max-width: 62%;max-height: 50%px">
                                     <span class="input-group-btn">
@@ -186,7 +192,7 @@
                                     });
                                 });
                             </script> --}}
-                            
+
                             <p class="price">Đơn giá: {{ $show_product->gia_sp }} VNĐ</p>
                             <?php
                                 $gia = $show_product->gia_sp;
@@ -216,7 +222,7 @@
                         <?php $ship =0; ?>
                         <span id="ship">{{ $ship }} VNĐ</span>
                     @endif
-                     
+
                 </li>
                 <li>
                     <span>tổng cộng:</span>
@@ -249,7 +255,7 @@
         if($(this).hasClass('inc')){
             $('#cartqty_'+key).val(parseInt(cartqty) + 1);
             update_cart(key,parseInt(cartqty) + 1);
-        } 
+        }
         else if($(this).hasClass('dec')){
             $('#cartqty_'+key).val(parseInt(cartqty) - 1);
             update_cart(key,parseInt(cartqty) - 1);
@@ -260,7 +266,7 @@
         var ele = e.split(",");
         update_cart(ele[0],ele[1]);
     }
-    //Hàm update cart 
+    //Hàm update cart
     function update_cart(key,qty){
 		$.ajax({
 			url: "{{ url('update-cart') }}/"+key+"/"+qty,
@@ -274,7 +280,7 @@
                     $('#ship').html(cms_encode_currency_format(30000)+ 'VNĐ');
                     $('#total-price').html(cms_encode_currency_format(response + 30000)+ 'VNĐ');
                 }
-                    
+
 			}
 		})
 	}
@@ -301,12 +307,12 @@
                     $('#ship').html(cms_encode_currency_format(ship)+ 'VNĐ');
                     $('#total-price').html(cms_encode_currency_format(result + ship)+ 'VNĐ');
                 }
-                    
+
                 if(result == 0){
                     $('#ship').html('0 VNĐ');
                     $('#total-price').html('0 VNĐ');
                 }
-                    
+
             }
         })
     }

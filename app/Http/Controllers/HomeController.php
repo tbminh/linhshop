@@ -88,6 +88,26 @@ class HomeController extends Controller
             'get_pk_product'=>$get_pk_product
         ]);
     }
+    //trang thuong hieu
+    public function thuonghieu($id){
+        $ncc = DB::table('ncc_sanphams')->where('ma_ncc','=',$id)->get();
+        return view('customer.thuonghieu')->with([
+            'ncc'=>$ncc,
+            'id_ncc'=>$id
+        ]);
+    }
+
+    //tim kiem san pham
+    public function searchProduct(Request $request){
+        $keyWord = $request->input('search_product');
+        $product = DB::table('sanphams')->where('tensp', 'LIKE', '%'.$keyWord.'%')->paginate(8);
+        $count = DB::table('sanphams')->where('tensp', 'LIKE', '%'.$keyWord.'%')->count();
+        return view('customer.search_product')->with([
+            'product' => $product,
+            'count' => $count,
+            'keyWord'=>$keyWord
+        ]);
+    }
 
     //trang danh gia sao
     public function postRatingStar($userId, $productId, Request $request){

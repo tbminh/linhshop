@@ -25,6 +25,7 @@
                 <a href="#">
                     <h2>{{trans($get_products->tensp)}}</h2>
                 </a>
+
                 @if($get_products->giamgia_sp == 0)
                     <p class="product-price">{{number_format($get_products->gia_sp)}} VNĐ</p>
                 @else
