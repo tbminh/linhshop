@@ -105,7 +105,6 @@
                                     @foreach($thuonghieu_all as $thuonghieu_alls)
                                         <li><a href="{{route('thuonghieu',$thuonghieu_alls->id)}}">{{$thuonghieu_alls->ten_ncc}}</a></li>
                                     @endforeach
-
                                 </ul>
                             </div>
                         </div>

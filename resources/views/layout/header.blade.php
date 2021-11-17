@@ -58,8 +58,6 @@
                                     @foreach($thuonghieu as $thuonghieus)
                                         <li><a href="{{route('thuonghieu',$thuonghieus->id)}}">{{$thuonghieus->ten_ncc}}</a></li>
                                     @endforeach
-
-
                                 </ul>
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">Tùy chọn</li>
