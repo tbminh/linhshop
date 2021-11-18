@@ -110,4 +110,5 @@ Route::get('page-order',[AdminController::class,'page_order']);
 Route::get('check-order/{id_order}',[AdminController::class,'check_order']);
 Route::get('page-detail/{id_order}',[AdminController::class,'page_detail']);
 Route::get('export-order/{id_order}',[AdminController::class,'export_order']);
+Route::get('cancel-order/{id_order}',[AdminController::class,'cancel_order']);
 

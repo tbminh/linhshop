@@ -306,4 +306,10 @@ class AdminController extends Controller
         $show_export = DB::table('hoadons')->find($id_order);
         return view('admin.quanlydonhang.xuat_hoadon',['show_export'=> $show_export]);
     }
+
+    //Hủy đơn hàng
+    public function cancel_order($id_order){
+        DB::table('hoadons')->where('id',$id_order)->update(['trangthai_hd'=> 3]);
+        return redirect()->back();
+    }
 }

@@ -69,7 +69,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger btn-sm" href="#" role="button" onclick="return confirm('Bạn có chắc muốn hủy không?');">
+                                                <a class="btn btn-danger btn-sm" href="{{ url('cancel-order/'.$data->id) }}" role="button" onclick="return confirm('Bạn có chắc muốn hủy không?');">
                                                     <i class="fa fa-trash"></i> Hủy
                                                 </a>
                                             </td>
@@ -81,7 +81,7 @@
                                             </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger btn-sm" href="#" role="button" onclick="return confirm('Bạn có chắc muốn hủy không?');">
+                                                <a class="btn btn-danger btn-sm" href="{{ url('cancel-order/'.$data->id) }}" role="button" onclick="return confirm('Bạn có chắc muốn hủy không?');">
                                                     <i class="fa fa-trash"></i> Hủy
                                                 </a>
                                             </td>
@@ -98,7 +98,7 @@
                                                 </button>
                                             </td>
                                         @else
-                                            <span>Đã hủy</span>
+                                            <td><span>Đã hủy</span></td>
                                             <td>
                                                 <button class="btn btn-danger btn-sm" type="button" disabled>
                                                     <i class="fa fa-check"></i> Xác Nhận
