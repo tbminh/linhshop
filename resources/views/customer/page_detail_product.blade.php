@@ -40,9 +40,13 @@
                     <!-- Cart & Favourite Box -->
                     <div class="cart-fav-box d-flex align-items-center">
                         <!-- Cart -->
-                        <button type="submit" name="addtocart" value="5" class="btn essence-btn">
-                            <i class="fa fa-shopping-cart"></i> Thêm Vào giỏ hàng
-                        </button>
+                        @if (Auth::check())
+                            <button type="submit" name="addtocart" value="5" class="btn essence-btn">
+                                <i class="fa fa-shopping-cart"></i> Thêm Vào giỏ hàng
+                            </button>
+                        @else
+                            <a href="{{ url('page-signin') }}" onclick="return confirm('Bạn phải đăng nhập trước!')" class="btn essence-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                        @endif
                         <!-- Favourite -->
                         <div class="product-favourite ml-4">
                             <a href="#" class="favme fa fa-heart"></a>

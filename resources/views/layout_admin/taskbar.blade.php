@@ -41,9 +41,6 @@
                 <li>
                     <a href="{{route('page_maneger_user')}}" class="dropdown-toggle"> <i class="menu-icon fas fa-user"></i> Quản lý thành viên </a>
                 </li>
-                <li>
-                    <a href="{{route('page_maneger_user')}}" class="dropdown-toggle"> <i class="menu-icon fas fa-user"></i> Quản lý thành viên </a>
-                </li>
 
                 <h3 class="menu-title">Dữ liệu bán hàng</h3><!-- /.menu-title -->
 

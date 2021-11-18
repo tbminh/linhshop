@@ -239,7 +239,7 @@
                                                                 <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
                                                             </a>
                                                         @else
-                                                            <a href="{{ url('page-signin') }}" class="btn essence-btn">
+                                                            <a href="{{ url('page-signin') }}" onclick="return confirm('Bạn cần đăng nhập!!!')" class="btn essence-btn">
                                                                 <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
                                                             </a>
                                                         @endif

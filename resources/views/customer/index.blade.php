@@ -150,8 +150,12 @@
                                     <div class="hover-content">
                                         <!-- Add to Cart -->
                                         <div class="add-to-cart-btn">
-                                            <a href="{{ url('add-cart/'.Auth::id(). '/'. $get_products->id) }}" class="btn essence-btn">Thêm vào giỏ hàng</a>
-                                        </div>
+                                            @if (Auth::check())
+                                                <a href="{{ url('add-cart/'.Auth::id(). '/'. $get_products->id) }}" class="btn essence-btn">Thêm vào giỏ hàng</a>
+                                            @else
+                                                <a href="{{ url('page-signin') }}" onclick="return confirm('Bạn cần phải đăng nhập trước!!!')" class="btn essence-btn">Thêm vào giỏ hàng</a>
+                                            @endif
+                                             </div>
                                     </div>
                                 </div>
                             </div>
