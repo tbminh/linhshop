@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\DocBlock\Tags\Uses;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -28,7 +28,7 @@ class LoginController extends Controller
             }else {
                 //image
                 $user = new User;
-                $user->maquyen = 13;
+                $user->maquyen = 3;
                 $user->hoten = $res->input('hoten');
                 $user->taikhoan = $res->input('username');
                 $user->email = $res->input('email');
@@ -60,7 +60,7 @@ class LoginController extends Controller
                 $register_success = Session::get('login_success');
                 Session()->put('login_success');
                 return redirect()->route('page_admin')->with('login_success','thanh cong');
-            }elseif (Auth::attempt(['taikhoan' => $email, 'password' => $password,'maquyen'=>13])){
+            }elseif (Auth::attempt(['taikhoan' => $email, 'password' => $password,'maquyen'=>3])){
                 $register_success = Session::get('register_success');
                 Session()->put('register_success');
                 return redirect()->route('/')->with('register_success','thanh cong');

@@ -53,6 +53,20 @@
                         </div>
                     </div>
                 </form>
+                <div>
+                    <div class="#">
+                        <div  class="#">
+                            <h3>Mô tả</h3>
+                            <p> {{ $get_products->mota_sp }}</p>
+                        </div>
+
+                        {{-- <div role="tabpanel" class="tab-pane fade" id="profile">
+                            @php($get_product_suppliers = DB::table('product_suppliers')->where('product_id',$view_detail_product->id)->first())
+                            @php($get_suppliers = DB::table('suppliers')->where('id', $get_product_suppliers->supplier_id)->first())
+                            <p><b style="font-size: 20px">{{ $get_suppliers->supplier_name }}</b>  </p>
+                        </div> --}}
+                    </div>
+                </div>
             </div>
         </section>
         <div class="container">
@@ -324,5 +338,12 @@
             document.getElementById("FormSubmit").submit();
         }
     </script>
+     <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+          alert(msg);
+        }
+      </script>
 
 @endsection

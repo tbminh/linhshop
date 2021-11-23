@@ -117,7 +117,8 @@
                                                 </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="POST" action="">
+                                                    <form method="POST" action="{{ url('change-role/'.$show_user_role->id) }}">
+                                                        @csrf
                                                         <div class="form-group">
                                                           <label for="exampleInputEmail1">Họ Tên:</label>
                                                           <input type="email" class="form-control" id="exampleInputEmail1"
@@ -135,12 +136,8 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">Thay Đổi</button>
+                                                        <button type="submit" class="btn btn-primary float-right">Thay Đổi</button>
                                                     </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
                                                 </div>
                                             </div>
                                             </div>
@@ -165,7 +162,7 @@
         var exist = '{{Session::has('success')}}';
         if (exist) {
             swal({
-                title: "Thêm thành công",
+                title: "Thành công",
                 text: "",
                 type: "error",
                 timer: 2000,

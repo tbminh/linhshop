@@ -74,6 +74,7 @@ Route::get('page-admin',[AdminController::class,'page_admin'])->name('page_admin
 //QUẢN LÝ NGƯỜI DÙNG
 Route::get('page-add-roleUser',[AdminController::class,'page_add_quyenuser'])->name('page_add_quyenuser');
 Route::post('post-add-roleUser',[AdminController::class,'post_add_quyenuser'])->name('post_add_quyenuser');
+Route::post('change-role/{id_user}',[AdminController::class,'change_role']);
 
 //quan ly nguoi dung
 Route::get('page-maneger-user',[AdminController::class,'page_maneger_user'])->name('page_maneger_user');
@@ -103,7 +104,7 @@ Route::get('delete-segment/{id_segment}',[AdminController::class,'delete_segment
 Route::get('page-sanpham',[AdminController::class,'page_sanpham'])->name('page_sanpham');
 Route::post('post-add-product',[AdminController::class,'add_product']);
 Route::get('post-delete-product/{id}',[AdminController::class,'post_delete_product'])->name('post_delete_product');
-Route::post('post-edit-product/{id}',[AdminController::class,'post_edit_product'])->name('post_edit_product');
+Route::get('post-edit-product/{id}',[AdminController::class,'post_edit_product'])->name('post_edit_product');
 
 //QUẢN LÝ ĐƠN HÀNG
 Route::get('page-order',[AdminController::class,'page_order']);

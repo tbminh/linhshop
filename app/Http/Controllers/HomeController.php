@@ -202,30 +202,33 @@ class HomeController extends Controller
 
     public function add_cart_detail(Request $request,$id_user,$id_product){
         $check_cart = DB::table('giohangs')->where([['ma_user',$id_user],['ma_sp',$id_product]])->first();
-        if(isset($check_cart)){
-            $get_id = $check_cart->id;
-            $update_cart = GioHang::find($get_id);
-            $get_qty = $request->input('inputQty');
-            $update_cart->soluong_sp = $update_cart->soluong_sp + $get_qty;
-            //Lấy số lượng hiện tại
-            $get_qty = $update_cart->soluong_sp;
-            //Lấy giá sản phẩm
-            $get_price = DB::table('sanphams')->where('id',$id_product)->first();
-            $update_cart->thanhtien = $get_qty * $get_price->gia_sp ;
-            $update_cart->save();
-        } else{
-            $add_cart = new GioHang();
-            $add_cart->ma_user = $id_user;
-            $add_cart->ma_sp = $id_product;
-            $add_cart->soluong_sp = $request->input('inputQty');
-            //Lấy số lượng hiện tại
-            $get_qty = $add_cart->soluong_sp;
-            //Lấy giá sản phẩm
-            $get_price = DB::table('sanphams')->where('id',$id_product)->first();
-            $add_cart->thanhtien = $get_qty * $get_price->gia_sp ;
-            $add_cart->save();
+        //Lấy giá sản phẩm
+        $get_price = DB::table('sanphams')->where('id',$id_product)->first();
+        $get_qty = $request->input('inputQty');
+        if($get_qty <= $get_price->soluong_sp){
+            if(isset($check_cart)){
+                $get_id = $check_cart->id;
+                $update_cart = GioHang::find($get_id);
+                $update_cart->soluong_sp = $update_cart->soluong_sp + $get_qty;
+                //Lấy số lượng hiện tại
+                $get_qty = $update_cart->soluong_sp;
+                $update_cart->thanhtien = $get_qty * $get_price->gia_sp ;
+                $update_cart->save();
+            } else{
+                $add_cart = new GioHang();
+                $add_cart->ma_user = $id_user;
+                $add_cart->ma_sp = $id_product;
+                $add_cart->soluong_sp = $get_qty;
+                //Lấy số lượng hiện tại
+                $get_qty = $add_cart->soluong_sp;
+                $add_cart->thanhtien = $get_qty * $get_price->gia_sp ;
+                $add_cart->save();
+            }
+            return redirect()->back()->with('success','Thêm thành công');
         }
-        return redirect()->back()->with('success','Thêm thành công');
+        else{
+            return redirect()->back()->with('alert','Số lượng trong kho không đủ');
+        }
     }
 
     //Hàm xóa giỏ hàng ajax

@@ -97,7 +97,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form method="POST" action="{{ route('post_edit_product',$data->id) }}" enctype="multipart/form-data">
+                                                            <form method="GET" action="{{ route('post_edit_product',$data->id) }}" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <div class="form-group">
                                                                     <label for="products">Phân Khúc</label>
@@ -120,7 +120,7 @@
                                                                     </select>
                                                                 </div>
 
-                                                                {{-- <div class="form-group">
+                                                                <div class="form-group">
                                                                     <label for="products">Nhà Cung Cấp</label>
                                                                     <select name="inputNCC" class="form-control">
                                                                         @php($get_ncc_sp = DB::table('ncc_sanphams')->where('ma_sp',$data->id)->first())
@@ -139,7 +139,7 @@
                                                                             @endif
                                                                         @endforeach
                                                                     </select>
-                                                                </div> --}}
+                                                                </div>
                                                                 <div class="form-group">
                                                                     <label for="products">Tên Sản Phẩm</label>
                                                                     <input type="text" class="form-control" id="exampleInput" name="inputName" value="{{$data->tensp}}" placeholder="">
@@ -163,6 +163,11 @@
                                                                 <div class="form-group">
                                                                     <label for="products">Giảm giá:</label>
                                                                     <input type="number" class="form-control" id="exampleInput" name="inputDis" value="{{$data->giamgia_sp}}" placeholder="">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="products">Mô Tả:</label>
+                                                                    <textarea type="number" class="form-control" id="exampleInput" name="inputDescribe">{{$data->mota_sp}}</textarea>
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -262,6 +267,11 @@
                             <div class="form-group">
                                 <label for="products">Giảm giá:</label>
                                 <input type="number" class="form-control" id="exampleInput" name="inputDis" placeholder="Nhập giá bán...">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="products">Mô Tả:</label>
+                                <textarea type="number" class="form-control" id="exampleInput" name="inputDescribe" placeholder="Nhập mô tả..."></textarea>
                             </div>
 
                             <div class="form-group">

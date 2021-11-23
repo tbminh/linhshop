@@ -49,6 +49,12 @@ class AdminController extends Controller
         ]);
     }
 
+    public function change_role(Request $request,$id_user){
+        $get_role = $request->input('inputRoleId');
+        DB::table('users')->where('id',$id_user)->update(['maquyen'=>$get_role]);
+        return redirect()->back()->with('success','Thành công');
+    }
+
     //quản lý nhà cung cấp
     public function page_ncc(){
         $dncc = DB::table('ncc_sanphams')->get();
@@ -258,6 +264,7 @@ class AdminController extends Controller
         $edit_product->gia_sp = $request->input('inputPrice');
         $edit_product->soluong_sp = $request->input('inputQty');
         $edit_product->giamgia_sp = $request->input('inputDis');
+        $edit_product->mota_sp = $request->input('inputDescribe');
         $edit_product->donvi = $request->input('inputUnit');
         $request->validate([
             'image' => 'required',
