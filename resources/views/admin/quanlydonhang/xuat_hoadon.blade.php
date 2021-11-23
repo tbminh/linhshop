@@ -132,18 +132,25 @@
                         </tr>
                         <tr class="shipping">
                             <td class="left">
-                                <strong>Phương thức vận chuyển</strong>
+                                <strong>Phí vận chuyển</strong>
                             </td>
-
-                            <td>
-                                <b>Miễn phí vận chuyển</b>
-                            </td>
+                            @if($total_price >= 500000)
+                                <td>
+                                    <?php $delivery = 0; ?>
+                                    <b>Miễn phí vận chuyển</b>
+                                </td>
+                            @else
+                                <td>
+                                    <?php $delivery = 30000; ?>
+                                    <b>{{ number_format($delivery) }} VND</b>
+                                </td>
+                            @endif
                         </tr>
                         <tr>
                             <td class="left">
                                 <strong class="text-dark">Tổng thanh toán</strong> </td>
                             <td class="right">
-                                <?php $total_payment = $total_price?>
+                                <?php $total_payment = $total_price + $delivery?>
                                 <strong class="text-dark">{{number_format($total_payment)}} VND</strong>
                             </td>
                         </tr>
