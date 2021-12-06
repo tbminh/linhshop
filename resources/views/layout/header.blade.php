@@ -93,7 +93,12 @@
             <!-- User Login Info -->
             @if(Auth::check())
                 <div class="user-login-info">
-                        <a href="{{route('logout')}}" title="Đăng xuất"><i class="fa fa-user"></i></a>
+                    <a href="{{ url('page-info/'.Auth::id()) }}" title="Thông Tin">
+                        <i class="fa fa-user"></i> 
+                    </a>
+                </div>
+                <div class="user-login-info">
+                    <a href="{{route('logout')}}" title="Đăng xuất"><i class="fa fa-sign-out"></i></a>
                 </div>
             @else
                 <div class="user-login-info">

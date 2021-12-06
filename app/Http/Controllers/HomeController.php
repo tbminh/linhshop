@@ -130,6 +130,25 @@ class HomeController extends Controller
         return view('customer.page_contact');
     }
 
+    public function page_info($id_user){
+        $show_orders = DB::table('hoadons')->where('ma_user',$id_user)->latest()->paginate(2);
+        return view('customer.trangthai.order',['show_orders' => $show_orders]);
+    }
+
+    public function page_complete_order($id_user){
+        $show_orders = DB::table('hoadons')->where([['ma_user', $id_user], ['trangthai_hd', 2]])->latest()->paginate(2);
+        return view('customer.trangthai.page_complete',['show_orders'=>$show_orders]);  
+    }
+
+    public function page_detail_order($id_order){
+        $show_order = DB::table('hoadons')->where('id',$id_order)->first();
+        return view('customer.trangthai.progress_bar',['show_order'=>$show_order]);  
+    }
+
+    public function page_cancel_order($id_user){
+        $show_orders = DB::table('hoadons')->where([['ma_user', $id_user], ['trangthai_hd', 3]])->latest()->paginate(2);
+        return view('customer.trangthai.page_cancel',['show_orders'=>$show_orders]);  
+    }
     //Trang blog
     public function page_blog (){
         return view('customer.page_blog');

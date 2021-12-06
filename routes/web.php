@@ -57,7 +57,10 @@ Route::get('/page-signup', function () {
 Route::get('/page-signin', function () {
     return view('admin.signin');
 })->name('page_signin');
-
+Route::get('/page-info/{id_user}',[HomeController::class,'page_info']);
+Route::get('/page-complete/{id_user}',[HomeController::class,'page_complete_order']);
+Route::get('/detail-order/{id_order}',[HomeController::class,'page_detail_order']);
+Route::get('/page-cancel/{id_user}',[HomeController::class,'page_cancel_order']);
 Route::post('/post-sign-up',[LoginController::class,'post_sign_up'])->name('post_sign_up');
 Route::post('/post-sign-in',[LoginController::class,'post_sign_in'])->name('post_sign_in');
 
